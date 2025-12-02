@@ -1,9 +1,9 @@
 package com.appdev.project.service;
 
-import com.appdev.project.entities.Planet;
+import com.appdev.project.dtos.PlanetDTO;
 
 import java.util.List;
 
 public interface PlanetService {
-    List<Planet> findAll();
+    List<PlanetDTO> findAll();
 }

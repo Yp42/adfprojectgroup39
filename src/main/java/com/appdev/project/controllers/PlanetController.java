@@ -1,6 +1,6 @@
 package com.appdev.project.controllers;
 
-import com.appdev.project.entities.Planet;
+import com.appdev.project.dtos.PlanetDTO;
 import com.appdev.project.service.PlanetService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +16,7 @@ public class PlanetController {
     private PlanetService planetService;
 
     @GetMapping({"/", ""})
-    public List<Planet> findAllPlanets() {
+    public List<PlanetDTO> findAllPlanets() {
         return planetService.findAll();
     }
 }
