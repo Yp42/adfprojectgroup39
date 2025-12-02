@@ -1,6 +1,6 @@
 package com.appdev.project.controllers;
 
-import com.appdev.project.daos.Planet;
+import com.appdev.project.entities.Planet;
 import com.appdev.project.service.PlanetService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

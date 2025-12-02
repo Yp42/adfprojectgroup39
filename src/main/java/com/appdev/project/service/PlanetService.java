@@ -1,6 +1,6 @@
 package com.appdev.project.service;
 
-import com.appdev.project.daos.Planet;
+import com.appdev.project.entities.Planet;
 
 import java.util.List;
 
