@@ -5,6 +5,7 @@ import com.appdev.project.dtos.Mappers;
 import com.appdev.project.dtos.PlanetDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -30,5 +31,10 @@ public class PlanetServiceImpl implements PlanetService {
                 .stream()
                 .map(Mappers::mapPlanetToPlanetDTO)
                 .toList();
+    }
+
+    @Override
+    public void createPlanet(@RequestBody PlanetDTO planetDTO) {
+        planetRepo.save(Mappers.mapPlanetDTOtoPlanet(planetDTO));
     }
 }
