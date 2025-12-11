@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Positive;
 public record PlanetDTO(
         @NotNull
         @Positive(message = "An ID must be provided")
-        int ID,
+        int id,
 
         @NotBlank(message = "A Name must be provided")
         String Name,
