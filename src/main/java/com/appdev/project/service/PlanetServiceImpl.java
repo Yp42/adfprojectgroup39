@@ -16,9 +16,9 @@ public class PlanetServiceImpl implements PlanetService {
 
 //    Add a new planet to the database.
 //    Retrieve all planets.
-//    Retrieve a planet by its unique ID. TODO
+//    Retrieve a planet by its unique ID.
 //    Update the details of an existing planet (e.g., change its mass). TODO
-//    Remove a planet from the database by its unique ID. TODO
+//    Remove a planet from the database by its unique ID.
 //    Retrieve planets based on their type (e.g., gas giant, terrestrial). TODO
 //    Retrieve specific fields of a planet (e.g., only name and mass_kg for use in other parts
 //    of the application). TODO
@@ -44,5 +44,13 @@ public class PlanetServiceImpl implements PlanetService {
         Planet p = planetRepo.findById(id).orElseThrow(() -> new RuntimeException("Planet not found"));
 
         return Mappers.mapPlanetToPlanetDTO(p);
+    }
+
+    @Override
+    public void deletePlanetByID(int id) {
+        if (!planetRepo.existsById(id)) {
+            throw new RuntimeException("Planet not found");
+        }
+        planetRepo.deleteById(id);
     }
 }

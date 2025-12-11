@@ -11,4 +11,6 @@ public interface PlanetService {
     void createPlanet(@RequestBody PlanetDTO planetDTO);
 
     PlanetDTO findPlanetById(int id);
+
+    void deletePlanetByID(int id);
 }

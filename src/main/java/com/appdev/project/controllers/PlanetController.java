@@ -28,4 +28,9 @@ public class PlanetController {
     public PlanetDTO findPlanetById(@PathVariable int id) {
         return planetService.findPlanetById(id);
     }
+
+    @DeleteMapping("/{id}")
+    public void deletePlanetById(@PathVariable int id) {
+        planetService.deletePlanetByID(id);
+    }
 }
