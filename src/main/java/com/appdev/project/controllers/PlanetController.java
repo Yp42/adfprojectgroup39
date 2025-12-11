@@ -14,17 +14,17 @@ import java.util.List;
 public class PlanetController {
     private PlanetService planetService;
 
-    @GetMapping({"/", ""})
+    @GetMapping()
     public List<PlanetDTO> findAllPlanets() {
         return planetService.findAll();
     }
 
-    @PostMapping({"/", ""})
+    @PostMapping()
     public void createPlanet(@Valid @RequestBody PlanetDTO planetDTO) {
         planetService.createPlanet(planetDTO);
     }
 
-    @GetMapping({"/{name}", "/{name}/"})
+    @GetMapping("/{id}")
     public PlanetDTO findPlanetById(@PathVariable int id) {
         return planetService.findPlanetById(id);
     }

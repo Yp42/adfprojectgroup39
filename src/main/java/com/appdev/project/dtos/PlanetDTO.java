@@ -1,12 +1,9 @@
 package com.appdev.project.dtos;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
 public record PlanetDTO(
-        @NotNull
-        @Positive(message = "An ID must be provided")
         int id,
 
         @NotBlank(message = "A Name must be provided")

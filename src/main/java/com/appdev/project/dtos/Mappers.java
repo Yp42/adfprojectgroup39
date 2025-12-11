@@ -16,7 +16,7 @@ public class Mappers {
 
     public static Planet mapPlanetDTOtoPlanet(PlanetDTO dto) {
         return new Planet(
-                dto.id(),
+                0,
                 dto.Name(),
                 dto.Type(),
                 dto.Radius(),

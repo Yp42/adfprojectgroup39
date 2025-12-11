@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PlanetRepo extends JpaRepository<Planet, Integer> {
-    Planet findPlanetById(int id);
+    //Planet findPlanetById(int planetId);
 }

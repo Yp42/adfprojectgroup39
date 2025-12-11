@@ -3,9 +3,9 @@ package com.appdev.project.service;
 import com.appdev.project.daos.PlanetRepo;
 import com.appdev.project.dtos.Mappers;
 import com.appdev.project.dtos.PlanetDTO;
+import com.appdev.project.entities.Planet;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
@@ -40,7 +40,16 @@ public class PlanetServiceImpl implements PlanetService {
     }
 
     @Override
-    public PlanetDTO findPlanetById(@PathVariable int id) {
-        return Mappers.mapPlanetToPlanetDTO(planetRepo.findPlanetById(id));
+    public PlanetDTO findPlanetById(int id) {
+        Planet p = planetRepo.findById(id).orElseThrow(() -> new RuntimeException("Planet not found"));
+
+        return new PlanetDTO(
+                p.getPlanetId(),
+                p.getName(),
+                p.getType(),
+                p.getRadiusKm(),
+                p.getMassKg(),
+                p.getOrbitalPeriodDays()
+        );
     }
 }
