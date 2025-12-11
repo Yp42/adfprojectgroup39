@@ -23,4 +23,9 @@ public class PlanetController {
     public void createPlanet(@Valid @RequestBody PlanetDTO planetDTO) {
         planetService.createPlanet(planetDTO);
     }
+
+    @GetMapping({"/{name}", "/{name}/"})
+    public PlanetDTO findPlanetById(@PathVariable int id) {
+        return planetService.findPlanetById(id);
+    }
 }

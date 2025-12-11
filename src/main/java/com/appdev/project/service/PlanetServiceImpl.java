@@ -5,6 +5,7 @@ import com.appdev.project.dtos.Mappers;
 import com.appdev.project.dtos.PlanetDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 public class PlanetServiceImpl implements PlanetService {
 
-//    Add a new planet to the database. TODO
+//    Add a new planet to the database.
 //    Retrieve all planets.
 //    Retrieve a planet by its unique ID. TODO
 //    Update the details of an existing planet (e.g., change its mass). TODO
@@ -36,5 +37,10 @@ public class PlanetServiceImpl implements PlanetService {
     @Override
     public void createPlanet(@RequestBody PlanetDTO planetDTO) {
         planetRepo.save(Mappers.mapPlanetDTOtoPlanet(planetDTO));
+    }
+
+    @Override
+    public PlanetDTO findPlanetById(@PathVariable int id) {
+        return Mappers.mapPlanetToPlanetDTO(planetRepo.findPlanetById(id));
     }
 }
