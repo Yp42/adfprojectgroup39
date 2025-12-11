@@ -13,4 +13,15 @@ public class Mappers {
                 p.getOrbitalPeriodDays()
         );
     }
+
+    public static Planet mapPlanetDTOtoPlanet(PlanetDTO dto) {
+        return new Planet(
+                dto.ID(),
+                dto.Name(),
+                dto.Type(),
+                dto.Radius(),
+                dto.Mass(),
+                dto.Orbital_Period()
+        );
+    }
 }
