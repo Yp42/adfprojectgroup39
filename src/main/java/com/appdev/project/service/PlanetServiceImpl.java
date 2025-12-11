@@ -43,13 +43,6 @@ public class PlanetServiceImpl implements PlanetService {
     public PlanetDTO findPlanetById(int id) {
         Planet p = planetRepo.findById(id).orElseThrow(() -> new RuntimeException("Planet not found"));
 
-        return new PlanetDTO(
-                p.getPlanetId(),
-                p.getName(),
-                p.getType(),
-                p.getRadiusKm(),
-                p.getMassKg(),
-                p.getOrbitalPeriodDays()
-        );
+        return Mappers.mapPlanetToPlanetDTO(p);
     }
 }
