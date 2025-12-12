@@ -13,4 +13,6 @@ public interface PlanetService {
     PlanetDTO findPlanetById(int id);
 
     void deletePlanetByID(int id);
+
+    List<PlanetDTO> findByType(String type);
 }

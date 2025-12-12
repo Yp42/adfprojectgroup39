@@ -33,4 +33,9 @@ public class PlanetController {
     public void deletePlanetById(@PathVariable int id) {
         planetService.deletePlanetByID(id);
     }
+
+    @GetMapping("/byType/{type}")
+    public List<PlanetDTO> findByType(@PathVariable String type) {
+        return planetService.findByType(type);
+    }
 }

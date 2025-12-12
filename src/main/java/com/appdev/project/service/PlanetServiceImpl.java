@@ -53,4 +53,13 @@ public class PlanetServiceImpl implements PlanetService {
         }
         planetRepo.deleteById(id);
     }
+
+    @Override
+    public List<PlanetDTO> findByType(String type) {
+        return planetRepo
+                .findByType(type)
+                .stream()
+                .map(Mappers::mapPlanetToPlanetDTO)
+                .toList();
+    }
 }
