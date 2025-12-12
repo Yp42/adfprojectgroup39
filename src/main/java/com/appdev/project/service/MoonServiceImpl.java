@@ -5,6 +5,7 @@ import com.appdev.project.daos.PlanetRepo;
 import com.appdev.project.dtos.MoonDTO;
 import com.appdev.project.entities.Moon;
 import com.appdev.project.entities.Planet;
+import com.appdev.project.exceptions.ResourceNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,9 @@ public class MoonServiceImpl implements MoonService {
     public void createMoon(MoonDTO dto) {
 
         Planet planet = planetRepo.findById(dto.planetId())
-                .orElseThrow(() -> new RuntimeException("Planet not found"));
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Planet not found: " + dto.planetId())
+                );
 
         Moon moon = new Moon(
                 0,
@@ -51,7 +54,9 @@ public class MoonServiceImpl implements MoonService {
     @Override
     public MoonDTO findById(int id) {
         Moon m = moonRepo.findById(id)
-                .orElseThrow(() -> new RuntimeException("Moon not found"));
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Moon not found: " + id)
+                );
 
         return new MoonDTO(
                 m.getMoonId(),
@@ -65,7 +70,7 @@ public class MoonServiceImpl implements MoonService {
     @Override
     public void deleteMoon(int id) {
         if (!moonRepo.existsById(id)) {
-            throw new RuntimeException("Moon not found");
+            throw new ResourceNotFoundException("Moon not found: " + id);
         }
         moonRepo.deleteById(id);
     }
