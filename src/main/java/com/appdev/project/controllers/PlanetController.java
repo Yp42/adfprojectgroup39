@@ -1,6 +1,7 @@
 package com.appdev.project.controllers;
 
 import com.appdev.project.dtos.PlanetDTO;
+import com.appdev.project.dtos.PlanetNameMassDTO;
 import com.appdev.project.service.PlanetService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -37,5 +38,10 @@ public class PlanetController {
     @GetMapping("/byType/{type}")
     public List<PlanetDTO> findByType(@PathVariable String type) {
         return planetService.findByType(type);
+    }
+
+    @GetMapping("/nameMass/{id}")
+    public PlanetNameMassDTO findNameMass(@PathVariable int id) {
+        return planetService.findNameMass(id);
     }
 }

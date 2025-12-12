@@ -3,6 +3,7 @@ package com.appdev.project.service;
 import com.appdev.project.daos.PlanetRepo;
 import com.appdev.project.dtos.Mappers;
 import com.appdev.project.dtos.PlanetDTO;
+import com.appdev.project.dtos.PlanetNameMassDTO;
 import com.appdev.project.entities.Planet;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ public class PlanetServiceImpl implements PlanetService {
 //    Retrieve a planet by its unique ID.
 //    Update the details of an existing planet (e.g., change its mass). TODO
 //    Remove a planet from the database by its unique ID.
-//    Retrieve planets based on their type (e.g., gas giant, terrestrial). TODO
+//    Retrieve planets based on their type (e.g., gas giant, terrestrial).
 //    Retrieve specific fields of a planet (e.g., only name and mass_kg for use in other parts
 //    of the application). TODO
 
@@ -61,5 +62,15 @@ public class PlanetServiceImpl implements PlanetService {
                 .stream()
                 .map(Mappers::mapPlanetToPlanetDTO)
                 .toList();
+    }
+
+    @Override
+    public PlanetNameMassDTO findNameMass(int id) {
+        if (!planetRepo.existsById(id)) {
+            throw new RuntimeException("Planet not found");
+        }
+        String[] res = planetRepo.findNameMass(id).split(",");
+
+        return new PlanetNameMassDTO(res[0], Double.parseDouble(res[1]));
     }
 }
